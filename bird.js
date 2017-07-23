@@ -29,7 +29,7 @@ function Bird() {
     }
 
     if (this.y < 0){
-      this.y = height;
+      this.y = 0;
       this.velocity = 0;
     }
   }
