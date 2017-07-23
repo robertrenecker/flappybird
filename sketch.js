@@ -22,11 +22,14 @@ function draw(){
     pipes[i].update();
 
     if(pipes[i].hits(bird)){
-      pipes.splice(0,pipes.length-1);
+      pipes.splice(pipes.length-1,0);
+      i=0;
+
+      console.log(pipes.length);
     }
 
     if(pipes[i].offscreen()) {
-      pipes.splice(i, 1);
+      pipes.splice(0, 1);
     }
 
   }
