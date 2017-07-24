@@ -15,17 +15,13 @@ function Bird() {
     this.velocity += -this.velocity-7;
     }
 
-
-
   this.update = function(){
-
 
     this.velocity += this.gravity;
     this.y += this.velocity;
 
     if (this.y > height){
-      this.y = height;
-      this.velocity = 0;
+      noLoop();
     }
 
     if (this.y < 0){

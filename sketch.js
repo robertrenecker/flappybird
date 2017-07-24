@@ -2,14 +2,16 @@ var bird;
 var pipes = [];
 
 function setup() {
-  createCanvas(440,600);
+  canvas = createCanvas(440,500);
+  canvas.position(200,50);
+  canvas.class("lemon");
   bird = new Bird();
   pipes.push(new Pipe());
 
 }
 
 function draw(){
-  background(0);
+  background(220, 180, 200);
   bird.update();
   bird.show();
 
@@ -22,10 +24,7 @@ function draw(){
     pipes[i].update();
 
     if(pipes[i].hits(bird)){
-      pipes.splice(pipes.length-1,0);
-      i=0;
-
-      console.log(pipes.length);
+      noLoop();
     }
 
     if(pipes[i].offscreen()) {
