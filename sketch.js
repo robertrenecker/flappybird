@@ -1,3 +1,7 @@
+//Draw the bird and Pipes for every 120 frames.
+//Check if bird hits pipe when it passes through x threshold
+
+
 var bird;
 var pipes = [];
 
@@ -7,6 +11,7 @@ function setup() {
   canvas.class("lemon");
   bird = new Bird();
   pipes.push(new Pipe());
+  check = false;
 
 }
 
@@ -15,25 +20,37 @@ function draw(){
   bird.update();
   bird.show();
 
-  if (frameCount % 120 == 0){
-    pipes.push(new Pipe());
+  if(frameCount % 120 == 0){
+    if(check != true){pipes.push(new Pipe());}
+
   }
+
+
+
+
+
+
 
   for(var i = pipes.length-1; i >=  0; i--){
     pipes[i].show();
     pipes[i].update();
 
     if(pipes[i].hits(bird)){
+      check = true;
+
       noLoop();
+
+
+
     }
 
     if(pipes[i].offscreen()) {
       pipes.splice(0, 1);
     }
 
-  }
-}
+  }//end for
 
+}//end draw
 
 function keyPressed() {
   if (key == ' ') {
